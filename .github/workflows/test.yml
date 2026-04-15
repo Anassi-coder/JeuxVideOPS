@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: Build, Lint, Test & Doc
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Functional tests
+        run: npm run test:functional
+
+      - name: Coverage report
+        run: npm run test:coverage
+
+      - name: Generate documentation
+        run: npm run doc
