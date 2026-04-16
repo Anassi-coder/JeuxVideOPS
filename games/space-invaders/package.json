@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "build": "rm -rf build && parcel build -d build --public-url ./ --no-source-maps ./src/index.html",
+    "zip": "rm -f bundle.zip && cd build && bestzip ../bundle.zip *",
+    "bundle": "yarn build && yarn zip",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.ts"]
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "bestzip": "^2.2.0",
+    "jest": "^30.3.0",
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.39.0",
+    "ts-jest": "^29.4.9",
+    "typescript": "^4.4.2"
+  }
+}
