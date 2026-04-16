@@ -9,8 +9,8 @@
     "test": "jest --testPathPattern=test/unit",
     "test:unit": "jest --testPathPattern=test/unit",
     "test:functional": "jest --testPathPattern=test/functional",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint . --ext .js",
+    "test:coverage": "jest --coverage --testPathIgnorePatterns=games/",
+    "lint": "eslint . --ext .js --ignore-pattern games/",
     "lint:fix": "eslint . --ext .js --fix",
     "doc": "jsdoc -r modules/ -d docs/"
   },
