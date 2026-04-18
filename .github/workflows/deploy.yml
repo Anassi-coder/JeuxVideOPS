@@ -28,6 +28,12 @@ jobs:
         with:
           node-version: 20.x
 
+      - name: Build Frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
       - name: Build Space Invaders
         working-directory: games/space-invaders
         run: |
@@ -38,7 +44,7 @@ jobs:
         run: |
           mkdir -p site/games/space-invaders
           mkdir -p site/games/spaceword
-          cp -r frontend/. site/
+          cp -r frontend/dist/. site/
           cp -r games/space-invaders/build/. site/games/space-invaders/
           cp -r games/spaceword/. site/games/spaceword/
 
